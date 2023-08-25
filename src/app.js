@@ -13,6 +13,8 @@ app.use(express.json());
 
 // ...
 
+// Alteracao feita para abertura de PR
+
 // É importante exportar a constante `app`,
 // para que possa ser utilizada pelo arquivo `src/server.js`
 module.exports = app;
