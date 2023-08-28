@@ -5,7 +5,10 @@
  */
 const CategoriesSchema = (sequelize, DataTypes) => {
     const CategoriesTable = sequelize.define('Category', {
-        id: DataTypes.INTEGER,
+        id: {
+          type: DataTypes.INTEGER,
+          primaryKey: true,
+        },
         name: DataTypes.STRING
     }, {
         tableName: 'categories',

@@ -1,4 +1,6 @@
 const express = require('express');
+const { loginUserController } = require('./controllers');
+const validationLogin = require('./middleware/validationLogin');
 
 // ...
 
@@ -11,9 +13,7 @@ app.get('/', (_request, response) => {
 
 app.use(express.json());
 
-// ...
-
-// Alteracao feita para abertura de PR
+app.post('/login', validationLogin, loginUserController.loginUser);
 
 // É importante exportar a constante `app`,
 // para que possa ser utilizada pelo arquivo `src/server.js`
