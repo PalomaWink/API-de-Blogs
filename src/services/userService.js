@@ -4,7 +4,7 @@ const { User } = require('../models');
 const registerNewUser = async (user) => {
     const newUser = await User.findOne({ where: { email: user.email } });
     if (newUser) {
-        return { status: (409), data: ({ message: 'User already registered' }) };
+        return { status: 409, data: ({ message: 'User already registered' }) };
     }
   const newUserCreated = await User.create(user);
   const jwtPayload = {
@@ -21,6 +21,13 @@ const registerNewUser = async (user) => {
   };
 };
 
+const getUser = async () => {
+  const allUsers = await User.findAll({ attributes: { exclude: ['password'] } });
+  console.log(allUsers);
+  return { status: 200, data: allUsers };
+};
+
 module.exports = {
     registerNewUser,
+    getUser,
 };
