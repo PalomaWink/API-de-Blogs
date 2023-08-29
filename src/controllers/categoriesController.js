@@ -10,6 +10,12 @@ const registerNewCategory = async (req, res) => {
   return res.status(status).json(data);
 };
 
+const allCategories = async (_req, res) => {
+  const { status, data } = await registerCategories.getAllCategories();
+  return res.status(status).json(data);
+};
+
 module.exports = {
   registerNewCategory,
+  allCategories,
 };

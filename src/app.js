@@ -21,6 +21,7 @@ app.get('/user', authorizationToken, userController.getAllUsers);
 app.get('/user/:id', authorizationToken, userController.getUserById);
 
 app.post('/categories', authorizationToken, registerCategory.registerNewCategory);
+app.get('/categories', authorizationToken, registerCategory.allCategories);
 
 // É importante exportar a constante `app`,
 // para que possa ser utilizada pelo arquivo `src/server.js`
