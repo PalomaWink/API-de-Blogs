@@ -23,11 +23,19 @@ const registerNewUser = async (user) => {
 
 const getUser = async () => {
   const allUsers = await User.findAll({ attributes: { exclude: ['password'] } });
-  console.log(allUsers);
   return { status: 200, data: allUsers };
+};
+
+const getUserId = async (id) => {
+  const userId = await User.findOne({ attributes: { exclude: ['password'] }, where: { id } });
+  if (!userId) {
+    return { status: 404, data: { message: 'User does not exist' } };
+  }
+  return { status: 200, data: userId };
 };
 
 module.exports = {
     registerNewUser,
     getUser,
+    getUserId,
 };
